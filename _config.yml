@@ -29,7 +29,7 @@ thumbnail: true
 
 # Contacts
 contacts:
-  github: http://github.com/ppoffice/hexo-theme-icarus
+  github: http://github.com/toadgg/bibihub
   twitter: '#'
   facebook: '#'
   dribbble: '#'
@@ -47,7 +47,7 @@ cdn: useso
 
 # Comment
 comment:
-    disqus_shortname: hexo-theme-hueman # enter disqus shortname here
+    disqus_shortname: bibihub # enter disqus shortname here
     duoshuo_shortname: # enter duoshuo shortname here
     youyan: # enter youyan uid here
 

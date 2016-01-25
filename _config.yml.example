@@ -29,7 +29,7 @@ thumbnail: true
 
 # Contacts
 contacts:
-  github: http://github.com/ppoffice/hexo-theme-icarus
+  github: http://github.com/toadgg/bibihub
   twitter: '#'
   facebook: '#'
   dribbble: '#'
@@ -44,6 +44,12 @@ cdn: # You can choose "useso" instead of "google apis"(default).
 # cdn: useso
 # OR
 # cdn:
+
+# Comment
+comment:
+    disqus_shortname: bibihub # enter disqus shortname here
+    duoshuo_shortname: # enter duoshuo shortname here
+    youyan: # enter youyan uid here
 
 # Miscellaneous
 google_site_verification:

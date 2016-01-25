@@ -1,7 +1,7 @@
 
-<% if (config.disqus_shortname){ %>
+<% if (theme.comment.disqus_shortname){ %>
 <script>
-  var disqus_shortname = '<%= config.disqus_shortname %>';
+  var disqus_shortname = '<%= theme.comment.disqus_shortname %>';
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
@@ -10,9 +10,9 @@
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
-<% } else if (config.duoshuo_shortname){ %>
+<% } else if (theme.comment.duoshuo_shortname){ %>
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"<%= config.duoshuo_shortname %>"};
+  var duoshuoQuery = {short_name:"<%= theme.comment.duoshuo_shortname %>"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -27,7 +27,7 @@
   (function() {
     var uyan = document.createElement('script');
     uyan.type = 'text/javascript';uyan.async = true;
-    uyan.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//v2.uyan.cc/code/uyan.js?uid=<%= config.uyan_uid %>';
+    uyan.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//v2.uyan.cc/code/uyan.js?uid=<%= theme.comment.youyan %>';
     uyan.charset = 'UTF-8';
     (document.getElementsByTagName('head')[0]
     || document.getElementsByTagName('body')[0]).appendChild(uyan);
