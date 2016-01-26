@@ -1385,7 +1385,7 @@ ol.toc {
 }
 .archive-article-thumbnail .thumbnail {
   width: 160px;
-  height: 90px;
+  height: 160px;
   display: block;
   position: relative;
   overflow: hidden;
@@ -1408,7 +1408,7 @@ ol.toc {
 @media screen and (max-width: 559px) {
   .archive-article-thumbnail .thumbnail {
     width: 120px;
-    height: 67.5px;
+    height: 120px;
   }
 }
 .archive-article-header {
@@ -1430,6 +1430,23 @@ ol.toc {
 .archive-article-date {
   display: block;
   margin-top: 8px;
+}
+.archive-article-description {
+  margin-top: 1em;
+  font-size: 1em;
+  line-height: 1.5em;
+  height: 4.8em;
+  overflow: hidden;
+  display: block;
+}
+@media screen and (max-width: 559px) {
+  .archive-article-description {
+    font-size: 0.8em;
+    line-height: 1.3em;
+    height: 3.8em;
+    overflow: hidden;
+    display: block;
+  }
 }
 .layout-wrap-inner.list-categories ul {
   margin-left: 15px;
