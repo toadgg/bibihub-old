@@ -4,7 +4,7 @@
   <subtitle><![CDATA[BiBiHub]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.bibihub.com/"/>
-  <updated>2016-01-25T11:14:42.000Z</updated>
+  <updated>2016-01-26T05:35:19.000Z</updated>
   <id>http://www.bibihub.com/</id>
   
   <author>
@@ -19,20 +19,17 @@
     <link href="http://www.bibihub.com/2015/10/25/nginx-apache-tomcat-configuration/"/>
     <id>http://www.bibihub.com/2015/10/25/nginx-apache-tomcat-configuration/</id>
     <published>2015-10-25T06:04:40.000Z</published>
-    <updated>2016-01-25T11:14:42.000Z</updated>
-    <content type="html"><![CDATA[<p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
-<ul>
-<li>下面是我的环境<ol>
-<li>OS X EI </li>
-<li>Nginx 1.8.0</li>
-</ol>
-</li>
-</ul>
-<blockquote><p>P.S 我环境里面的nginx是通过<a href="http://brew.sh/" target="_blank" rel="external">homebrew</a>安装的</p>
+    <updated>2016-01-26T05:35:19.000Z</updated>
+    <content type="html"><![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
 </blockquote>
-<p>在我的环境里面nginx的配置文件在下面这个位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/etc/nginx</span><br></pre></td></tr></table></figure></p>
+<p>下面是我的环境</p>
+<pre><code>1. OS X EI 
+2. Nginx 1.8.0
+P.S 我环境里面的nginx是通过<a href="http://brew.sh/" target="_blank" rel="external">homebrew</a>安装的
+</code></pre><p>在我的环境里面nginx的配置文件在下面这个位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/etc/nginx</span><br></pre></td></tr></table></figure></p>
 <p>让我们先看看nginx的默认配置，nginx的默认配置文件是 nginx.conf.default 我把配置中注释掉的配置隐藏掉了，注意最后一行，意思是nginx会把servers文件夹下的配置加载进来</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">worker_processes</span>  <span class="number">1</span>;</span><br><span class="line"><span class="title">events</span> &#123;</span><br><span class="line">    <span class="title">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title">http</span> &#123;</span><br><span class="line">    <span class="title">include</span>       mime.types;</span><br><span class="line">    <span class="title">default_type</span>  application/octet-stream;</span><br><span class="line">    <span class="title">sendfile</span>        <span class="built_in">on</span>;</span><br><span class="line">    <span class="title">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line">    <span class="title">server</span> &#123;</span><br><span class="line">        <span class="title">listen</span>       <span class="number">8080</span>;</span><br><span class="line">        <span class="title">server_name</span>  localhost;</span><br><span class="line">        <span class="title">location</span> / &#123;</span><br><span class="line">            <span class="title">root</span>   html;</span><br><span class="line">            <span class="title">index</span>  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">        <span class="title">location</span> = /50x.html &#123;</span><br><span class="line">            <span class="title">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title">include</span> servers/*;</span><br></pre></td></tr></table></figure>
+<p>我先删掉一些配置，这样8080端口就不会被nginx占用了（因为tomcat的默认端口也是8080）<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">worker_processes</span>  <span class="number">1</span>;</span><br><span class="line"><span class="title">events</span> &#123;</span><br><span class="line">    <span class="title">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title">include</span> servers/*;</span><br></pre></td></tr></table></figure></p>
 <p>现在你有两种选择，一是直接修改此配置文件，另一种方式是，我们在servers文件夹下创建一个新的配置文件，我喜欢后者</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/etc/nginx</span><br><span class="line">mv ./nginx.conf ./nginx.conf.bck</span><br><span class="line">cp ./nginx.conf.default nginx.conf</span><br><span class="line">touch ./servers/bibihub.server</span><br><span class="line">vi ./servers/bibihub.server</span><br></pre></td></tr></table></figure>
 <p>现在让我们来编辑一下配置文件<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">http</span> &#123;</span><br><span class="line">    <span class="title">include</span>       mime.types;</span><br><span class="line">    <span class="title">default_type</span>  application/octet-stream;</span><br><span class="line">    <span class="title">sendfile</span>        <span class="built_in">on</span>;</span><br><span class="line">    <span class="title">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line">    <span class="title">server</span> &#123;</span><br><span class="line">        <span class="title">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="title">server_name</span>  bibihub.com;</span><br><span class="line">        <span class="title">location</span> / &#123;</span><br><span class="line">            <span class="title">proxy_set_header</span> X-Forwarded-Host <span class="variable">$host</span>;</span><br><span class="line">            <span class="title">proxy_set_header</span> X-Forwarded-Server <span class="variable">$host</span>;</span><br><span class="line">            <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="title">proxy_pass</span> <span class="url">http://127.0.0.1:8080/</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -40,12 +37,10 @@
 <p>现在让我们以管理员到权限启动nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br><span class="line">或者</span><br><span class="line">sudo nginx <span class="operator">-s</span> reload</span><br></pre></td></tr></table></figure></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
-<ul>
-<li>下面是我的环境<ol>
-<li>OS X EI </li>
-<li>Nginx 1.8.0</li>
-]]>
+    <![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
+</blockquote>
+<p>下面是我的环境</p>
+<pre><code>1. OS X ]]>
     </summary>
     
       <category term="nginx" scheme="http://www.bibihub.com/tags/nginx/"/>
