@@ -1,0 +1,9 @@
+<% if (post.description){ %>
+  <h2 class="archive-article-description">
+  <% if (post.link){ %>
+    <a href="<%- url_for(post.link) %>" target="_blank" itemprop="url"><%= post.description %></a>
+  <% } else if (post.title){ %>
+    <a href="<%- url_for(post.path) %>"><%= post.description %></a>
+  <% } %>
+  </h2>
+<% } %>

@@ -8,6 +8,7 @@
     <header class="archive-article-header">
       <%- partial('post/title', {class_name: 'archive-article-title'}) %>
       <% if(archive) { %>
+        <%- partial('post/description', {post: post}) %>
         <%- partial('post/date', {class_name: 'archive-article-date', date_format: 'MMM D'}) %>
       <% } else { %>
         <%- partial('post/date', {class_name: 'archive-article-date', date_format: 'YYYY MMM D'}) %>
