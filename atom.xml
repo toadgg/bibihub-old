@@ -4,7 +4,7 @@
   <subtitle><![CDATA[BiBiHub]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.bibihub.com/"/>
-  <updated>2016-01-26T06:09:53.000Z</updated>
+  <updated>2016-01-26T07:47:39.000Z</updated>
   <id>http://www.bibihub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/"/>
     <id>http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/</id>
     <published>2015-10-25T06:04:40.000Z</published>
-    <updated>2016-01-26T06:09:53.000Z</updated>
+    <updated>2016-01-26T07:47:39.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
 <footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/">利用nginx改变web应用的端口号</a></cite></footer></blockquote>
 <p>下面是我的环境</p>
@@ -34,11 +34,11 @@ P.S 我环境里面的nginx是通过<a href="http://brew.sh/" target="_blank" re
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/etc/nginx</span><br><span class="line">mv ./nginx.conf ./nginx.conf.bck</span><br><span class="line">cp ./nginx.conf.default nginx.conf</span><br><span class="line">touch ./servers/bibihub.server</span><br><span class="line">vi ./servers/bibihub.server</span><br></pre></td></tr></table></figure>
 <p>现在让我们来编辑一下配置文件<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">http</span> &#123;</span><br><span class="line">    <span class="title">include</span>       mime.types;</span><br><span class="line">    <span class="title">default_type</span>  application/octet-stream;</span><br><span class="line">    <span class="title">sendfile</span>        <span class="built_in">on</span>;</span><br><span class="line">    <span class="title">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line">    <span class="title">server</span> &#123;</span><br><span class="line">        <span class="title">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="title">server_name</span>  bibihub.com;</span><br><span class="line">        <span class="title">location</span> / &#123;</span><br><span class="line">            <span class="title">proxy_set_header</span> X-Forwarded-Host <span class="variable">$host</span>;</span><br><span class="line">            <span class="title">proxy_set_header</span> X-Forwarded-Server <span class="variable">$host</span>;</span><br><span class="line">            <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="title">proxy_pass</span> <span class="url">http://127.0.0.1:8080/</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这个配置告诉nginx重定向80端口到8080端口</p>
-<p>现在让我们以管理员到权限启动nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br><span class="line">或者</span><br><span class="line">sudo nginx <span class="operator">-s</span> reload</span><br></pre></td></tr></table></figure></p>
+<p>现在让我们以<mark><strong>管理员(root)</strong></mark>到权限启动nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br><span class="line">或者</span><br><span class="line">sudo nginx <span class="operator">-s</span> reload</span><br></pre></td></tr></table></figure></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
-<footer><strong>BiBiHub</strong><cite><a href="h]]>
+    <![CDATA[本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上]]>
+    
     </summary>
     
       <category term="nginx" scheme="http://www.bibihub.com/tags/nginx/"/>
