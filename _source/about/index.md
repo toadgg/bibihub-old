@@ -1,30 +1,30 @@
-title: "About"
+title: "关于BiBiHub"
 layout: "page"
+hidedate: true
 ---
-### The blog theme you may fall in love with, coming to Hexo. [Preview](http://ppoffice.github.io/hexo-theme-icarus/)
-![](http://ppoffice.github.io/hexo-theme-icarus/gallery/preview.jpg "")
+### The blog theme you may fall in love with, coming to Hexo. [Fork GitHub](http://github.com/toadgg/bibihub)
+![preview](http://raw.githubusercontent.com/toadgg/bibihub/gallery/preview.png "")
 
 ## Installation
 
 ### Install
 
 ``` bash
-$ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus
+$ git clone https://github.com/toadgg/bibihub.git themes/bibihub
 ```
 
-**Icarus requires Hexo 3.0 and above.**
+**bibihub requires Hexo 3.0 and above.**
 
 ### Enable
 
-1. Rename `themes\icarus\_config.yml.example` to `themes\icarus\_config.yml`;
-2. Copy `themes\icarus\_config.yml.site.example` to your hexo blog's root directory and rename it to `_config.yml`;
-3. Copy `themes\icarus\_source\*` into your hexo blog's directory `source`;
-4. Then modify `theme` setting in `_config.yml` to `icarus`.
+1. Rename `themes\bibihub\_config.yml.example` to `themes\bibihub\_config.yml`;
+3. Copy `themes\bibihub\_source\*` into your hexo blog's directory `source`;
+4. Then modify `theme` setting in `_config.yml` to `bibihub`.
 
 ### Update
 
 ``` bash
-cd themes/icarus
+cd themes/bibihub
 git pull
 ```
 
@@ -56,7 +56,7 @@ thumbnail: true
 
 # Contacts
 contacts:
-  github: http://github.com/ppoffice/hexo-theme-icarus
+  github: https://github.com/toadgg/bibihub
   twitter: '#'
   facebook: '#'
   dribbble: '#'
@@ -66,9 +66,24 @@ contacts:
 links:
   Hexo: http://hexo.io
 
+# CDN
+cdn: # You can choose "useso" instead of "google apis"(default).
+# cdn: useso
+# OR
+# cdn:
+
+# Comment
+comment:
+    disqus_shortname: bibihub # enter disqus shortname here
+    duoshuo_shortname: # enter duoshuo shortname here
+    youyan: # enter youyan uid here
+    
 # Miscellaneous
+google_site_verification:
 google_analytics:
-favicon: favicon.png
+baidu_analytics:
+swiftype_install_key:
+favicon: /images/favicon.png
 twitter:
 google_plus:
 fb_admins:
@@ -82,32 +97,35 @@ fb_app_id:
 - **thumbnail** - Whether to show post thumbnails in the sidebar and archive pages.
 - **links** - Links displayed in the link widget.
 - **google_analytics** - Google Analytics ID.
+- **baidu_analytics** - Baidu Analytics ID.
+- **swiftype_install_key** - Enable [Swiftype].
 - **favicon** - Favicon path.
+
+![swiftype search](http://raw.githubusercontent.com/toadgg/bibihub/gallery/swiftype.png "")
 
 ### Site configuration example
 ```r
 # Site
-title: Icarus
+title: Bibihub
 subtitle:
-description: Hexo theme - Icarus
-author: PPOffice
+description: Hexo theme - Bibihub
+author: toadgg
 author_title: 'Web Developer & Designer'
 avatar: css/images/avatar.png
-location: 'Harbin, China'
-language: en
-timezone:
-
+location: 'Beijing, China'
+follow: https://github.com/toadgg/
+email: # Your email (Used to show Gravatar).
+language: zh-CN
+timezone: Asia/Shanghai
+since: 2016 # The start year showing in your copyright section.
+keywords: Web,前端,JavaScript,html5,css3
 ...
-
-# Disqus
-disqus_shortname:
 ```
 
-- **author** - Your name.
 - **author_title** - Title to your occupation.
 - **avatar** - Your avatar image link.
 - **location** - Where you live in.
-- **disqus_shortname** - Your Disqus shortname.
+- **keywords** - Your Site keywords.
 
 ### Post Thumbnail & Banner
 
@@ -121,16 +139,27 @@ thumbnail: http://example.com/thumbnail.jpg
 banner: http://example.com/banner.jpg
 ```
 
+### Post Description & Keywords
+```r
+title: Nginx vs Tomcat
+# add those
+description: 本教程介绍了如何配置Nginx作为反向代理服务器...
+Keywords: nginx,tomcat
+```
+![description](http://raw.githubusercontent.com/toadgg/bibihub/gallery/description.png "")
+![Keywords](http://raw.githubusercontent.com/toadgg/bibihub/gallery/keywords.png "")
+
 ### Custom Categories & Tags Pages
 
 To enable custom categories page and tags page, just copy the `categories` folder and `tags` folder under your theme's `_source` foler into your site's `source` folder. Then edit theme's _config.yml and add the following lines: 
 ```r
-# Header
-menu:
-  ...
-  Categories: categories # -> add this line
-  Tags: tags # -> and add this line
-  ...
+title: Nginx vs Tomcat
+# add those
+tags:
+  - nginx
+  - tomcat
+categories:
+  - nginx
 ```
 
 ### Languages
@@ -141,13 +170,32 @@ English and Simplified Chinese are the default languages of the theme. You can a
 language: zh-CN
 ```
 
+### You Can Change Your Hexo Blog’s root directory scaffolds post.md to this
+
+```r
+---
+title: {{ title }}
+description: 本教程出自BiBiHub
+date: {{ date }}
+tags: [dev]
+categories: [dev]
+thumbnail: thumbnail_url
+banner: banner_url
+keywords: dev
+---
+
+{% blockquote BiBiHub http://www.bibihub.com/ 文章来自BiBiHub%}
+本教程出自BiBiHub
+{% endblockquote %}
+```
+
 ## Features
 
 ### Profile Sidebar
 
 A nice place to show yourself. You can add your own information in your site's `_config.yml`
 
-![](http://ppoffice.github.io/hexo-theme-icarus/gallery/profile.png "")
+![](http://raw.githubusercontent.com/toadgg/bibihub/gallery/profile.png "")
 
 ### Post Banner & Thumbnail
 
@@ -155,9 +203,9 @@ Thanks to [atika](https://github.com/atika), you can now add thumbnails and bann
 
 ### Responsive Layout
 
-Icarus knows on what screen size you are browsering the website, and reorganize the layout to fit your device.
+Bibihub knows on what screen size you are browsering the website, and reorganize the layout to fit your device.
 
-![](http://ppoffice.github.io/hexo-theme-icarus/gallery/responsive.jpg "")
+![responsive](http://raw.githubusercontent.com/toadgg/bibihub/gallery/responsive.png "")
 
 ### Custom Categories & Tags Pages
 
@@ -165,7 +213,7 @@ Get your categories and tags listed in single pages to make your blog more metho
 
 ### Fancybox
 
-Icarus uses [Fancybox] to showcase your photos. You can use Markdown syntax or fancybox tag plugin to add your photos.
+Bibihub uses [Fancybox] to showcase your photos. You can use Markdown syntax or fancybox tag plugin to add your photos.
 
 ```
 ![img caption](img url)
@@ -173,7 +221,7 @@ Icarus uses [Fancybox] to showcase your photos. You can use Markdown syntax or f
 
 ### Sidebar
 
-Icarus provides 6 built-in widgets:
+Bibihub provides 6 built-in widgets:
 
 - recent_posts
 - category
@@ -198,8 +246,11 @@ All of them are enabled by default. You can edit them in `widget` setting.
 - **fancybox** - Only download [Fancybox].
 - **clean** - Clean temporarily files and downloaded files.
 
+##### Thx [ppoffice](https://github.com/ppoffice) , Because this theme fork form [hexo-theme-icarus](http://github.com/ppoffice/hexo-theme-icarus) 
+
 [Hexo]: http://zespia.tw/hexo/
 [Fancybox]: http://fancyapps.com/fancybox/
+[Swiftype]: http://swiftype.com/
 [Font Awesome]: http://fontawesome.io/
 [Grunt]: http://gruntjs.com/
 
