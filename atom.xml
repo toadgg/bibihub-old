@@ -4,7 +4,7 @@
   <subtitle><![CDATA[BiBiHub]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.bibihub.com/"/>
-  <updated>2016-01-26T05:35:19.000Z</updated>
+  <updated>2016-01-26T06:09:53.000Z</updated>
   <id>http://www.bibihub.com/</id>
   
   <author>
@@ -16,12 +16,12 @@
   
   <entry>
     <title><![CDATA[利用nginx改变web应用的端口号]]></title>
-    <link href="http://www.bibihub.com/2015/10/25/nginx-apache-tomcat-configuration/"/>
-    <id>http://www.bibihub.com/2015/10/25/nginx-apache-tomcat-configuration/</id>
+    <link href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/"/>
+    <id>http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/</id>
     <published>2015-10-25T06:04:40.000Z</published>
-    <updated>2016-01-26T05:35:19.000Z</updated>
+    <updated>2016-01-26T06:09:53.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
-</blockquote>
+<footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/">利用nginx改变web应用的端口号</a></cite></footer></blockquote>
 <p>下面是我的环境</p>
 <pre><code>1. OS X EI 
 2. Nginx 1.8.0
@@ -38,16 +38,14 @@ P.S 我环境里面的nginx是通过<a href="http://brew.sh/" target="_blank" re
 ]]></content>
     <summary type="html">
     <![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
-</blockquote>
-<p>下面是我的环境</p>
-<pre><code>1. OS X ]]>
+<footer><strong>BiBiHub</strong><cite><a href="h]]>
     </summary>
     
       <category term="nginx" scheme="http://www.bibihub.com/tags/nginx/"/>
     
       <category term="tomcat" scheme="http://www.bibihub.com/tags/tomcat/"/>
     
-      <category term="运维" scheme="http://www.bibihub.com/categories/%E8%BF%90%E7%BB%B4/"/>
+      <category term="nginx" scheme="http://www.bibihub.com/categories/nginx/"/>
     
   </entry>
   
