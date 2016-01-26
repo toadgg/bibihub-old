@@ -4,7 +4,7 @@
   <subtitle><![CDATA[BiBiHub]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.bibihub.com/"/>
-  <updated>2016-01-26T08:55:16.000Z</updated>
+  <updated>2016-01-26T10:04:49.000Z</updated>
   <id>http://www.bibihub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/"/>
     <id>http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/</id>
     <published>2015-10-25T06:04:40.000Z</published>
-    <updated>2016-01-26T08:55:16.000Z</updated>
+    <updated>2016-01-26T10:04:49.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
 <footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/">利用nginx改变web应用的端口号</a></cite></footer></blockquote>
 <p>下面是我的环境</p>
