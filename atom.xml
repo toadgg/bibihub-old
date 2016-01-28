@@ -4,7 +4,7 @@
   <subtitle><![CDATA[BiBiHub]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.bibihub.com/"/>
-  <updated>2016-01-28T08:26:59.000Z</updated>
+  <updated>2016-01-28T11:27:53.000Z</updated>
   <id>http://www.bibihub.com/</id>
   
   <author>
@@ -13,6 +13,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[AngularJS中的ng-repeat按照时间范围过滤数据]]></title>
+    <link href="http://www.bibihub.com/angularjs/how-to-filter-angular-ng-repeat-to-use-ranges-of-dates/"/>
+    <id>http://www.bibihub.com/angularjs/how-to-filter-angular-ng-repeat-to-use-ranges-of-dates/</id>
+    <published>2016-01-28T10:05:57.000Z</published>
+    <updated>2016-01-28T11:27:53.000Z</updated>
+    <content type="html"><![CDATA[<blockquote><p>本教程演示了一个AngularJS的自定义的filter在ng-repeat中的应用，实现了把数据按照时间范围来显示</p>
+<footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/angularjs/how-to-filter-angular-ng-repeat-to-use-ranges-of-dates/">AngularJS中的ng-repeat如何按照指定的时间范围过滤数据</a></cite></footer></blockquote>
+<a id="more"></a>
+<p>教程开始前，先看一下我们要处理的数据，一会我会以<code>StartDateTime</code>为条件，进行过滤（检索）<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    Title:'5天后',</span><br><span class="line">    StartDateTime: Date.now() + (86400000 * 5) // in 5 days</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    Title:'1天后',</span><br><span class="line">    StartDateTime: Date.now() + 86400000 // in a day</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    Title:'2天后',</span><br><span class="line">    StartDateTime: Date.now() + (86400000 * 2) // in 2 days</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    Title:'40天后',</span><br><span class="line">    StartDateTime: Date.now() + (86400000 * 40) //  in 40 days</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    Title:'2天前',</span><br><span class="line">    StartDateTime: Date.now() - (86400000 * 2) //  2 days ago</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>下面，我们定义一个叫<code>ranges</code>的<code>filter</code>，第一个是要过滤的字段，后两个为开始时间与结束时间<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, []);</span><br><span class="line">app.filter(<span class="string">'ranges'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">items, field, startDate, endDate</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timeStart = startDate;</span><br><span class="line">    <span class="keyword">var</span> timeEnd = endDate;</span><br><span class="line">    <span class="keyword">return</span> items.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> (item[field] &gt; timeStart &amp;&amp; item[field] &lt; timeEnd);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>然后我们来调用我们的filter<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">开始时间<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"date"</span> <span class="attribute">ng-model</span>=<span class="value">"startDate"</span>&gt;</span></span><br><span class="line">结束时间<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"date"</span> <span class="attribute">ng-model</span>=<span class="value">"endDate"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">ng-repeat</span>=<span class="value">"item in eventListData | ranges:'StartDateTime':startDate:endDate"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="Live_Demo"><a href="#Live_Demo" class="headerlink" title="Live Demo"></a>Live Demo</h1><hr>
+<div ng-controller="ctrl" ng-app="app"><br>  开始时间<input type="date" ng-model="startDate"><br><br>  结束时间<input type="date" ng-model="endDate"><br>  <div ng-repeat="item in eventListData | ranges:'StartDateTime':startDate:endDate | orderBy:'+StartDateTime'"><br>  <span ng-bind="item.StartDateTime | date:'yyyy-MM-dd' + '  (' + (item.Title) + ')'"></span><br>  </div><br></div>
+
+<hr>
+<h1 id="u5B8C_u6574_u7684_u4EE3_u7801_u5982_u4E0B"><a href="#u5B8C_u6574_u7684_u4EE3_u7801_u5982_u4E0B" class="headerlink" title="完整的代码如下"></a>完整的代码如下</h1><hr>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">ng-app</span>=<span class="value">"app"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">ng-controller</span>=<span class="value">"ctrl"</span>&gt;</span></span><br><span class="line">  开始时间<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"date"</span> <span class="attribute">ng-model</span>=<span class="value">"startDate"</span>&gt;</span><span class="tag">&lt;<span class="title">br</span>&gt;</span></span><br><span class="line">  结束时间<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"date"</span> <span class="attribute">ng-model</span>=<span class="value">"endDate"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">ng-repeat</span>=<span class="value">"item in eventListData | ranges:'StartDateTime':startDate:endDate | orderBy:'+StartDateTime'"</span>&gt;</span>&#123;&#123;item.StartDateTime | date:'yyyy-MM-dd'&#125;&#125;(&#123;&#123;item.Title&#125;&#125;)<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, []);</span><br><span class="line">  app.filter(<span class="string">'ranges'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">items, field, startDate, endDate</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> timeStart = startDate;</span><br><span class="line">      <span class="keyword">var</span> timeEnd = endDate;</span><br><span class="line">      <span class="keyword">return</span> items.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (item[field] &gt; timeStart &amp;&amp; item[field] &lt; timeEnd);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br><span class="line">  app.controller(<span class="string">'ctrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">    $scope.startDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.now());</span><br><span class="line">    $scope.endDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.now() + (<span class="number">86400000</span> * <span class="number">30</span>));</span><br><span class="line">    $scope.eventListData = [</span><br><span class="line">      &#123;</span><br><span class="line">        Title:<span class="string">'5天后'</span>,</span><br><span class="line">        StartDateTime: <span class="built_in">Date</span>.now() + (<span class="number">86400000</span> * <span class="number">5</span>) <span class="comment">// in 5 days</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        Title:<span class="string">'1天后'</span>,</span><br><span class="line">        StartDateTime: <span class="built_in">Date</span>.now() + <span class="number">86400000</span> <span class="comment">// in a day</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        Title:<span class="string">'2天后'</span>,</span><br><span class="line">        StartDateTime: <span class="built_in">Date</span>.now() + (<span class="number">86400000</span> * <span class="number">2</span>) <span class="comment">// in 2 days</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        Title:<span class="string">'40天后'</span>,</span><br><span class="line">        StartDateTime: <span class="built_in">Date</span>.now() + (<span class="number">86400000</span> * <span class="number">40</span>) <span class="comment">//  in 40 days</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        Title:<span class="string">'2天前'</span>,</span><br><span class="line">        StartDateTime: <span class="built_in">Date</span>.now() - (<span class="number">86400000</span> * <span class="number">2</span>) <span class="comment">//  2 days ago</span></span><br><span class="line">      &#125;</span><br><span class="line">    ];</span><br><span class="line">  &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+<script>
+  var app = angular.module('app', []);
+  app.filter('ranges', function(){
+    return function(items, field, startDate, endDate){
+      var timeStart = startDate;
+      var timeEnd = endDate; // 1 day in ms
+      return items.filter(function(item){
+        return (item[field] > timeStart && item[field] < timeEnd);
+      });
+    };
+  });
+  app.controller('ctrl', function($scope){
+    $scope.startDate = new Date(Date.now());
+    $scope.endDate = new Date(Date.now() + (86400000 * 30));
+    $scope.eventListData = [
+      {
+        Title:'5天后',
+        StartDateTime: Date.now() + (86400000 * 5) // in 5 days
+      },
+      {
+        Title:'1天后',
+        StartDateTime: Date.now() + 86400000 // in a day
+      },
+      {
+        Title:'2天后',
+        StartDateTime: Date.now() + (86400000 * 2) // in 2 days
+      },
+      {
+        Title:'40天后',
+        StartDateTime: Date.now() + (86400000 * 40) //  in 40 days
+      },
+      {
+        Title:'2天前',
+        StartDateTime: Date.now() - (86400000 * 2) //  2 days ago
+      }
+    ];
+  });
+</script>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[本教程出自BiBiHub]]>
+    
+    </summary>
+    
+      <category term="angularjs" scheme="http://www.bibihub.com/tags/angularjs/"/>
+    
+      <category term="web" scheme="http://www.bibihub.com/tags/web/"/>
+    
+      <category term="前端" scheme="http://www.bibihub.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="angularjs" scheme="http://www.bibihub.com/categories/angularjs/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[如何在Linux(centos7)下搭建一个VPN服务器]]></title>
