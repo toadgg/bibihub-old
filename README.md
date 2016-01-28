@@ -3,7 +3,7 @@
 # 哔哔Hub
 
 ### The blog theme you may fall in love with, coming to Hexo. [Fork GitHub](http://github.com/toadgg/bibihub)
-![preview](http://raw.githubusercontent.com/toadgg/bibihub/gallery/preview.png "")
+![preview](http://bibihub.oss-cn-hangzhou.aliyuncs.com/about%2Fpreview.png "")
 
 ## Installation
 
@@ -101,7 +101,7 @@ fb_app_id:
 - **swiftype_install_key** - Enable [Swiftype].
 - **favicon** - Favicon path.
 
-![swiftype search](http://raw.githubusercontent.com/toadgg/bibihub/gallery/swiftype.png "")
+![swiftype search](http://bibihub.oss-cn-hangzhou.aliyuncs.com/about%2Fswiftype.png "")
 
 ### Site configuration example
 ```r
@@ -146,8 +146,8 @@ title: Nginx vs Tomcat
 description: 本教程介绍了如何配置Nginx作为反向代理服务器...
 Keywords: nginx,tomcat
 ```
-![description](http://raw.githubusercontent.com/toadgg/bibihub/gallery/description.png "")
-![Keywords](http://raw.githubusercontent.com/toadgg/bibihub/gallery/keywords.png "")
+![description](http://bibihub.oss-cn-hangzhou.aliyuncs.com/about%2Fdescription.png "")
+![Keywords](http://bibihub.oss-cn-hangzhou.aliyuncs.com/about%2Fkeywords.png "")
 
 ### Custom Categories & Tags Pages
 
@@ -195,7 +195,7 @@ keywords: dev
 
 A nice place to show yourself. You can add your own information in your site's `_config.yml`
 
-![](http://raw.githubusercontent.com/toadgg/bibihub/gallery/profile.png "")
+![](http://bibihub.oss-cn-hangzhou.aliyuncs.com/about%2Fprofile.png "")
 
 ### Post Banner & Thumbnail
 
@@ -205,7 +205,7 @@ Thanks to [atika](https://github.com/atika), you can now add thumbnails and bann
 
 Bibihub knows on what screen size you are browsering the website, and reorganize the layout to fit your device.
 
-![responsive](http://raw.githubusercontent.com/toadgg/bibihub/gallery/responsive.png "")
+![responsive](http://bibihub.oss-cn-hangzhou.aliyuncs.com/about%2Fresponsive.png "")
 
 ### Custom Categories & Tags Pages
 
