@@ -1,5 +1,5 @@
 # Logo
-logo: css/images/logo.png # Empty this to unset logo and show site title in the same place
+logo: images/logo.png # Empty this to unset logo and show site title in the same place
 
 # Header
 menu:
