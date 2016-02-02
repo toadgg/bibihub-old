@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+  <url>
+    <loc>http://www.bibihub.com/linux/setup-pptp-vpn-server-on-centos-7/</loc>
+    <lastmod>2016-02-02T05:23:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>如何在Linux(centos7)下搭建一个VPN服务器</title>
+        <pubTime>2016-01-27T07:29:24.000Z</pubTime>
+        
+        <tag>linux </tag>
+         
+        <tag>pptp </tag>
+         
+        <tag>vpn </tag>
+         
+        <tag>vps </tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://www.bibihub.com/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.bibihub.com/angularjs/how-to-filter-angular-ng-repeat-to-use-ranges-of-dates/</loc>
+    <lastmod>2016-02-02T05:23:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS中的ng-repeat按照时间范围过滤数据</title>
+        <pubTime>2016-01-28T10:05:57.000Z</pubTime>
+        
+        <tag>angularjs </tag>
+         
+        <tag>web </tag>
+         
+        <tag>前端 </tag>
+         
+         
+           
+             
+              <breadCrumb title="angularjs" url="http://www.bibihub.com/categories/angularjs/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/</loc>
+    <lastmod>2016-02-02T05:11:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>利用nginx改变web应用的端口号</title>
+        <pubTime>2015-10-25T06:04:40.000Z</pubTime>
+        
+        <tag>nginx </tag>
+         
+        <tag>tomcat </tag>
+         
+         
+           
+             
+              <breadCrumb title="nginx" url="http://www.bibihub.com/categories/nginx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.bibihub.com/php/lumen-mobile-api-oauth-2-authentication/</loc>
+    <lastmod>2016-02-02T03:46:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>基于Lumen搭建一个OAUTH2认证的API框架</title>
+        <pubTime>2016-01-29T08:55:02.000Z</pubTime>
+        
+        <tag>api </tag>
+         
+        <tag>lumen </tag>
+         
+        <tag>oauth2 </tag>
+         
+        <tag>php </tag>
+         
+         
+           
+             
+              <breadCrumb title="php" url="http://www.bibihub.com/categories/php/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+</urlset>

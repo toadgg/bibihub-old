@@ -4,7 +4,7 @@
   <subtitle><![CDATA[BiBiHub]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.bibihub.com/"/>
-  <updated>2016-02-01T09:48:22.000Z</updated>
+  <updated>2016-02-02T03:46:33.000Z</updated>
   <id>http://www.bibihub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.bibihub.com/php/lumen-mobile-api-oauth-2-authentication/"/>
     <id>http://www.bibihub.com/php/lumen-mobile-api-oauth-2-authentication/</id>
     <published>2016-01-29T08:55:02.000Z</published>
-    <updated>2016-02-01T09:48:22.000Z</updated>
+    <updated>2016-02-02T03:46:33.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>PHP的Lumen-Framework是为速度而生的Laravel框架，相对于Laravel来说，更适合做移动API开发，本教程会一步步的教大家，如何搭建一个OAUTH2认证的API工程，我们要在Lumen框架上，整合dingoapi与oauth2-server-laravel这两个工程</p>
 <footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/php/lumen-mobile-api-oauth-2-authentication/">基于PHP(Lumen)搭建一个OAUTH2认证的API框架</a></cite></footer></blockquote>
 <a id="more"></a>
@@ -106,7 +106,7 @@
     <link href="http://www.bibihub.com/angularjs/how-to-filter-angular-ng-repeat-to-use-ranges-of-dates/"/>
     <id>http://www.bibihub.com/angularjs/how-to-filter-angular-ng-repeat-to-use-ranges-of-dates/</id>
     <published>2016-01-28T10:05:57.000Z</published>
-    <updated>2016-01-28T11:27:53.000Z</updated>
+    <updated>2016-02-02T05:23:19.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>本教程演示了一个AngularJS的自定义的filter在ng-repeat中的应用，实现了把数据按照时间范围来显示</p>
 <footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/angularjs/how-to-filter-angular-ng-repeat-to-use-ranges-of-dates/">AngularJS中的ng-repeat如何按照指定的时间范围过滤数据</a></cite></footer></blockquote>
 <a id="more"></a>
@@ -181,7 +181,7 @@
     <link href="http://www.bibihub.com/linux/setup-pptp-vpn-server-on-centos-7/"/>
     <id>http://www.bibihub.com/linux/setup-pptp-vpn-server-on-centos-7/</id>
     <published>2016-01-27T07:29:24.000Z</published>
-    <updated>2016-01-28T08:26:59.000Z</updated>
+    <updated>2016-02-02T05:23:29.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>&emsp;&emsp;作为一个程序猿，在工作中经常会遇到各种各样的”灵异事件”。你要清楚一件事，你遇到的问题有99.99%的可能，别人同样遇到过，而且已经有了很多解决方案，现在你需要的做的，仅仅是找到它。俗话说”内事问baidu，外事问google”，程序上的事还是让我们去问google比较靠谱。<br>&emsp;&emsp;本教程出介绍了如何利用VULTR的VPS搭建一个基于PPTP协议的VPN服务器，来访问像google这样被和谐掉的网站。</p>
 <footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/linux/setup-pptp-vpn-server-on-centos-7/">如何在Linux(centos7)下搭建一个VPN服务器</a></cite></footer></blockquote>
 <a id="more"></a>
@@ -242,7 +242,7 @@
     <link href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/"/>
     <id>http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/</id>
     <published>2015-10-25T06:04:40.000Z</published>
-    <updated>2016-01-28T02:39:51.000Z</updated>
+    <updated>2016-02-02T05:11:24.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>本教程介绍了如何配置Nginx作为反向代理服务器，把80端口的流量重定向到Apache Tomcat在8080端口上，或者其它的Web服务器上。</p>
 <footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/nginx/nginx-apache-tomcat-configuration/">利用nginx改变web应用的端口号</a></cite></footer></blockquote>
 <a id="more"></a>
