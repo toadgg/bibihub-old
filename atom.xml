@@ -4,7 +4,7 @@
   <subtitle><![CDATA[BiBiHub]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.bibihub.com/"/>
-  <updated>2016-02-02T03:46:33.000Z</updated>
+  <updated>2016-02-02T09:02:43.000Z</updated>
   <id>http://www.bibihub.com/</id>
   
   <author>
@@ -13,6 +13,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[利用文件同步(ssh)发布hexo到云端vps]]></title>
+    <link href="http://www.bibihub.com/hexo/deploy-hexo-to-vps-use-rsync/"/>
+    <id>http://www.bibihub.com/hexo/deploy-hexo-to-vps-use-rsync/</id>
+    <published>2016-02-02T06:41:36.000Z</published>
+    <updated>2016-02-02T09:02:43.000Z</updated>
+    <content type="html"><![CDATA[<blockquote><p>都是百度搜索惹的祸，辛辛苦苦写了blog，却发现百度不能收录github:pages，本教程来帮助大家，让百度收录我们的博客</p>
+<footer><strong>BiBiHub</strong><cite><a href="http://www.bibihub.com/hexo/deploy-hexo-to-vps-use-rsync/">利用文件同步(ssh)发布hexo到云端vps</a></cite></footer></blockquote>
+<h2 id="u8FD9_u4E2A_u4E16_u754C_u80BF_u4E48_u4E86"><a href="#u8FD9_u4E2A_u4E16_u754C_u80BF_u4E48_u4E86" class="headerlink" title="这个世界肿么了"></a>这个世界肿么了</h2><hr>
+<p>实在想不通自己的网站为啥在百度搜索不到，去google搜索，去<a href="http://zhanzhang.baidu.com/crawltools/index" target="_blank" rel="external">百度站长</a>提交，一直<code>抓取失败</code>，现在用<code>curl</code>模拟一下百度爬虫<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -A <span class="string">"Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)"</span> https://github.com</span><br></pre></td></tr></table></figure></p>
+<p>结果…<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Request forbidden. Please contact support <span class="keyword">if</span> the problem persists and you feel this is <span class="keyword">in</span> error.</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>看来万能的百度，不灵了,好吧，反正我有一个VPS，现在只用它来访问google，让我们把Hexo部署上去吧</p>
+<hr>
+<h2 id="u9996_u5148_uFF0C_u6211_u4EEC_u8981_u7528hexo-deployer-rsync_u8FD9_u4E2A_u63D2_u4EF6"><a href="#u9996_u5148_uFF0C_u6211_u4EEC_u8981_u7528hexo-deployer-rsync_u8FD9_u4E2A_u63D2_u4EF6" class="headerlink" title="首先，我们要用hexo-deployer-rsync这个插件"></a>首先，我们要用<a href="http://github.com/hexojs/hexo-deployer-rsync" target="_blank" rel="external">hexo-deployer-rsync</a>这个插件</h2><hr>
+<p>安装方法很简单<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-rsync --save</span><br></pre></td></tr></table></figure></p>
+<p>完整配置<code>_config.yml</code>，那些有默认值的可以不配<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deploy:&#10;  type: rsync&#10;  host: &#60;host&#62;&#10;  user: &#60;user&#62;&#10;  root: &#60;root&#62;&#10;  port: [port] # Default is 22&#10;  delete: [true|false] # Default is true&#10;  args: &#60;rsync args&#62;&#10;  verbose: [true|false] # Default is true&#10;  ignore_errors: [true|false] # Default is false</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>host</strong>: 云端vps的host  </li>
+<li><strong>user</strong>: 在vps上的用户名(要保证该用户有文件夹写权限)</li>
+<li><strong>root</strong>: vps上，要同步到的路径  </li>
+<li><strong>port</strong>: 端口号，一般是22端口</li>
+<li><strong>delete</strong>: 是否删除vps上的过期文件</li>
+<li><strong>args</strong>: rsync 参数</li>
+<li><strong>verbose</strong>: Display verbose messages</li>
+<li><strong>ignore_errors</strong>: Ignore errors</li>
+</ul>
+<hr>
+<h2 id="u5728VPS_u4E0A_u5B89_u88C5nginx"><a href="#u5728VPS_u4E0A_u5B89_u88C5nginx" class="headerlink" title="在VPS上安装nginx"></a>在VPS上安装<a href="http://zh.wikipedia.org/wiki/Nginx" target="_blank" rel="external">nginx</a></h2><hr>
+<p>我的VPS是centos7，安装<a href="http://zh.wikipedia.org/wiki/Nginx" target="_blank" rel="external">nginx</a>很简单，用<code>yum</code>命令就好了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install nginx</span><br></pre></td></tr></table></figure></p>
+<p>用root启动起来验证一下(服务器上的nginx一般默认是80端口，80端口需要root权限)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service nginx start</span><br></pre></td></tr></table></figure></p>
+<p>访问<a href="http://remote-ip，看到这个页面，说明nginx安装成功了" target="_blank" rel="external">http://remote-ip，看到这个页面，说明nginx安装成功了</a><br><img src="http://bibihub.oss-cn-hangzhou.aliyuncs.com/nginx/welcome-nginx.png" alt="nginx欢迎页面"><br>这里面有两个有用的信息，第一个是<code>/usr/share/nginx/html</code>是默认的应用路径。第二个是<code>/etc/nginx/nginx.conf</code>是默认的配置文件，你可以通过配置文件，来修改端口，错误页面，应用路径等，我们暂时不去理会他。一会，我们用<code>hexo-deployer-rsync</code>，来把我们的hexo项目发布到<code>/usr/share/nginx/html</code>下</p>
+<hr>
+<h2 id="u5F00_u59CB_u90E8_u7F72"><a href="#u5F00_u59CB_u90E8_u7F72" class="headerlink" title="开始部署"></a>开始部署</h2><hr>
+<p>用最简单的配置，编辑本地<code>_config.yml</code>文件<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deploy:&#10;  type: rsync&#10;  host: vps-ip&#10;  user: vps-user&#10;  root: /usr/share/nginx/html&#10;  port: 22</span><br></pre></td></tr></table></figure></p>
+<p>执行hexo发布命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate --deploy</span><br></pre></td></tr></table></figure></p>
+<p>命令出现交互窗口，输入密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vps-ip<span class="string">'s password:</span></span><br></pre></td></tr></table></figure></p>
+<p>发布完成后，验证一下，打开网页访问<a href="http://remote-ip" target="_blank" rel="external">http://remote-ip</a><br><img src="http://bibihub.oss-cn-hangzhou.aliyuncs.com/nginx/deploy-success.png" alt="hexo部署成功"></p>
+<hr>
+<h2 id="u57DF_u540D_u89E3_u6790"><a href="#u57DF_u540D_u89E3_u6790" class="headerlink" title="域名解析"></a>域名解析</h2><hr>
+<p>如果你已经有域名了，且已经把域名解析到了github page上，那么就忽略这个章节把，如果你还没有域名，或者打算购买一个，那就继续往下看吧<br>一般来说，在你买的域名网站，会有类似<code>解析设置</code>的面板，一般我们要添加两条<code>A</code>纪录，一个主机纪录为<code>@</code>、一个为<code>www</code>，截图上的说明很清楚了，我就不啰嗦了<br><img src="http://bibihub.oss-cn-hangzhou.aliyuncs.com/nginx/dns-settings.png" alt="设置dns"></p>
+<hr>
+<h2 id="u9A8C_u8BC1_u767E_u5EA6_u662F_u5426_u80FD_u6536_u5F55_u7F51_u7AD9"><a href="#u9A8C_u8BC1_u767E_u5EA6_u662F_u5426_u80FD_u6536_u5F55_u7F51_u7AD9" class="headerlink" title="验证百度是否能收录网站"></a>验证百度是否能收录网站</h2><hr>
+<p>登录<a href="http://zhanzhang.baidu.com/crawltools/index" target="_blank" rel="external">百度站长</a>，看一看效果，点击抓取按钮，重新抓取一次网站<br><img src="http://bibihub.oss-cn-hangzhou.aliyuncs.com/hexo/baidu-zhanzhang-crawltools.png" alt="抓取异常"></p>
+<h2 id="u8FD8_u662F_u6293_u53D6_u5931_u8D25_21_21_21"><a href="#u8FD8_u662F_u6293_u53D6_u5931_u8D25_21_21_21" class="headerlink" title="还是抓取失败!!!"></a>还是抓取失败!!!</h2><p>查看错误原因，发现网站IP还是github的，点击反馈按钮，页面会提示<code>已反馈，预计几分钟内完成更新</code><br><img src="http://bibihub.oss-cn-hangzhou.aliyuncs.com/hexo/baidu-spider-error.png" alt="抓取失败原因"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[本教程介绍了如何利用文件同步(ssh)把hexo工程部署到vps上去]]>
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://www.bibihub.com/tags/hexo/"/>
+    
+      <category term="linux" scheme="http://www.bibihub.com/tags/linux/"/>
+    
+      <category term="vps" scheme="http://www.bibihub.com/tags/vps/"/>
+    
+      <category term="hexo" scheme="http://www.bibihub.com/categories/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[基于Lumen搭建一个OAUTH2认证的API框架]]></title>
