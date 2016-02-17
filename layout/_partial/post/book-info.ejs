@@ -1,0 +1,15 @@
+<% if (post.description){ %>
+  <h2 class="archive-book-description">
+  <% if (post.link){ %>
+    <a href="<%- url_for(post.link) %>" target="_blank" itemprop="url"><%= post.description %></a>
+  <% } else if (post.title){ %>
+    书名: 《<%= post.book['name'] %>》<br>
+    作者: <%= post.book['author'] %><br>
+    出版时间: <%= post.book['pubDate'] %><br>
+    出版社: <%= post.book['publisher'] %><br>
+    页数: <%= post.book['pages'] %><br>
+    ISBN: <%= post.book['ISBN'] %><br>
+    语言: <%= post.book['language'] %>
+  <% } %>
+  </h2>
+<% } %>

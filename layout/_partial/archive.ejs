@@ -14,7 +14,18 @@
       <section class="archives-wrap">
         <div class="archives">
     <% } %>
+
+    <% switch (post.column) {
+    case 'article': %>
     <%- partial('archive-post', {post: post, archive: true}) %>
+    <% break;
+    case 'books': %>
+    <%- partial('archive-post-book', {post: post, archive: true}) %>
+    <% break;
+    default: %>
+    <%- partial('archive-post', {post: post, archive: true}) %>
+    <% } %>
+
   <% });
     if (page.posts.length){ %>
     </div></section>
@@ -66,9 +77,20 @@
       </nav>
     <% }
     break;
+
   default:
     page.posts.each(function(post){ %>
+      <% switch (post.column) {
+      case 'article': %>
       <%- partial('article', {post: post, index: true}) %>
+      <% break;
+      case 'books': %>
+      <%- partial('archive-post-book', {post: post, archive: true}) %>
+      <% break;
+      default: %>
+      <%- partial('article', {post: post, index: true}) %>
+      <% } %>
+
     <% })
     if (page.total > 1){ %>
       <nav id="page-nav">

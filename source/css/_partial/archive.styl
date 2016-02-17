@@ -56,6 +56,16 @@
       width: 120px
       height: 120px
 
+.archive-book-thumbnail
+  @extend .archive-article-thumbnail
+  .thumbnail
+    width: 160px
+    height: 233px
+  @media mq-mini
+    .thumbnail
+      width: 120px
+      height: 175px
+
 .archive-article-header
   padding: 10px
   a
@@ -70,6 +80,10 @@
     height: 1em
     overflow: hidden
     display: block
+
+.archive-book-title
+  @extend .archive-article-title
+  line-height: 2em
 
 .archive-article-date
   display: block
@@ -88,6 +102,12 @@
     height: 3.8em
     overflow: hidden
     display: block
+
+.archive-book-description
+  @extend .archive-article-description
+  height: 10.5em
+  @media mq-mini
+    height: 8.5em
 
 .layout-wrap-inner
   &.list-categories

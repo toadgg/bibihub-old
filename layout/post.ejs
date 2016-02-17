@@ -1,1 +1,10 @@
+<% switch (page.column) {
+    case 'article': %>
 <%- partial('_partial/article', {post: page, index: false}) %>
+<% break;
+    case 'books': %>
+<%- partial('_partial/book', {post: page, index: false}) %>
+<% break;
+    default: %>
+<%- partial('_partial/article', {post: page, index: false}) %>
+<% } %>

@@ -1,0 +1,94 @@
+<article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <% if (post.link || post.title){ %>
+      <header class="article-header">
+        <%- partial('post/title', {class_name: 'article-title'}) %>
+        <div class="article-meta">
+          <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+          <%- partial('post/category') %>
+        </div>
+      </header>
+    <% } %>
+    <div class="article-entry" itemprop="articleBody">
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+                <% if (!index && post.toc){ %>
+                    <div id="toc" class="toc-article">
+                    <strong class="toc-title"><%= __('article.catalogue') %></strong>
+    <%- toc(post.content) %>
+  </div>
+<% } %>
+      <div class="archive-article-thumbnail">
+        <div class="archive-book-thumbnail">
+          <a href="<%- url_for((post.link?post.link:post.path)) %>" class="thumbnail">
+            <%
+              var s = post.book['cover'];
+            if(s.length > 0){
+              if(config.post_asset_folder){
+                var pattern = /^[\\{0,1}\/{0,1}]([^\/^\\]+)/,
+                        pattern_ = /([^\/^\\]+)/;
+                if((ret = pattern.exec(s)) != null) {
+                  if(ret[0].length == s.length)
+                    s = config.root + post.path + ret[1];
+                } else if ((ret = pattern_.exec(s)) != null) {
+                  if(ret[0].length == s.length)
+                    s = config.root + post.path + ret[1];
+                }
+              }
+            %>
+            <span style="background-image:url(<%- url_for(s) %>)" alt="<%= post.book['name'] %>" class="thumbnail-image"></span>
+            <% } else { %>
+            <span class="thumbnail-image thumbnail-none"></span>
+            <% } %>
+          </a>
+        </div>
+      </div>
+      <div class="post-book-info">
+        <%- partial('post/book-info', {post: post}) %>
+        <%- partial('post/book-download', {book: post.book}) %>
+      </div>
+      <%- post.content %>
+      <% } %>
+    </div>
+    <footer class="article-footer">
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('article.share') %></a>
+      <% if (post.comments && theme.comment.disqus_shortname){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('article.comments') %></a>
+      <% } else if (post.comments && theme.comment.duoshuo_shortname){ %>
+        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('article.comments') %></a>
+      <% } else if (post.comments && theme.comment.youyan){ %>
+        <a href="<%- post.permalink %>#uyan-thread" class="article-comment-link"><%= __('article.comments') %></a>
+      <% } %>
+      <%- partial('post/tag') %>
+    </footer>
+  </div>
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
+</article>
+
+<% if (!index && post.comments && theme.comment.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } else if (!index && post.comments && theme.comment.duoshuo_shortname){ %>
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="<%- post.permalink %>" data-title="<%- post.title %>" data-url="<%- post.permalink %>">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+  </section>
+<% } else if (!index && post.comments && theme.comment.youyan){ %>
+<section id="comments">
+  <div id="uyan-thread" class="uyan-thread">
+    <div id="uyan_frame"></div>
+  </div>
+</section>
+<% } %>
